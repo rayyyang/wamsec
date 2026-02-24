@@ -3,11 +3,16 @@ name: Download WamSEC source files
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   download:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ github.token }}
       
       - name: Download large JS files from live site
         run: |
@@ -24,7 +29,6 @@ jobs:
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add app.js embedded_data.js company_tickers.js tables_index.js
-          git commit -m "Add full-size JS files from live site" || echo "No changes to commit"
-          git push
+          git diff --cached --quiet && echo "No changes to commit" || (git commit -m "Add full-size JS files from live site" && git push)
