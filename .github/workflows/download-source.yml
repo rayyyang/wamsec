@@ -1,0 +1,30 @@
+name: Download WamSEC source files
+
+on:
+  workflow_dispatch:
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Download large JS files from live site
+        run: |
+          # Download exact copies from the live pplxsec.com
+          curl -sL "https://www.pplxsec.com/app.js?v=1771831993" -o app.js
+          curl -sL "https://www.pplxsec.com/embedded_data.js?v=1771796694" -o embedded_data.js
+          curl -sL "https://www.pplxsec.com/company_tickers.js?v=1771796694" -o company_tickers.js
+          curl -sL "https://www.pplxsec.com/tables_index.js?v=1771796694" -o tables_index.js
+          
+          # Verify downloads
+          echo "=== File sizes ==="
+          wc -c app.js embedded_data.js company_tickers.js tables_index.js
+      
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add app.js embedded_data.js company_tickers.js tables_index.js
+          git commit -m "Add full-size JS files from live site" || echo "No changes to commit"
+          git push
