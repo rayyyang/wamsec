@@ -1,0 +1,19 @@
+# Data files
+company_tickers.json
+tables.db
+data.db
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Environment
+.env
+.env.local

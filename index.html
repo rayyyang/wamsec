@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WamSEC — SEC Filings Research</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css?v=1771831993">
+</head>
+<body>
+  <div id="app">
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+      <div class="navbar-inner">
+        <a class="navbar-logo" href="#/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a2 2 0 012-2h8l6 6v10a2 2 0 01-2 2H6a2 2 0 01-2-2z"/><path d="M14 3v6h6"/><path d="M8 13h8"/><path d="M8 17h5"/></svg>
+          WamSEC
+        </a>
+        <div class="navbar-search" id="navbarSearch">
+          <span class="navbar-search-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          </span>
+          <input type="text" class="navbar-search-input" id="navbarSearchInput" placeholder="Search companies, filings, or full-text..." autocomplete="off">
+          <div class="autocomplete-dropdown" id="navbarAutocomplete"></div>
+        </div>
+        <div class="navbar-links" id="navbarLinks">
+          <div class="navbar-dropdown" id="screeningDropdown">
+            <button class="navbar-dropdown-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg> Screening <svg class="dropdown-caret" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="navbar-dropdown-menu">
+              <a href="#/screening/search" class="navbar-dropdown-item"><strong>All-Company Document Search</strong><span>Search across the text of all companies' documents</span></a>
+              <a href="#/screening/recent" class="navbar-dropdown-item"><strong>All-Company Recent Filings</strong><span>View all recent filings of a form type</span></a>
+              <a href="#/screening/alerts" class="navbar-dropdown-item"><strong>All-Company Filing Alerts</strong><span>Manage alerts for any new filings of a form type</span></a>
+              <a href="#/screening/search-alerts" class="navbar-dropdown-item"><strong>All-Company Search Alerts</strong><span>Manage alerts for any new documents that match a search</span></a>
+            </div>
+          </div>
+          <a href="#/features">Features</a>
+          <a href="#/login" id="navSignIn">Sign In</a>
+          <a href="#/register" class="btn-primary-sm" id="navGetStarted">Get Started</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main id="content"></main>
+
+    <!-- TOAST CONTAINER -->
+    <div class="toast-container" id="toastContainer"></div>
+  </div>
+
+  <!-- CDN Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/diff_match_patch/20121119/diff_match_patch.js"></script>
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+  <script src="./embedded_data.js?v=1771796694"></script>
+  <script src="./company_tickers.js?v=1771796694"></script>
+  <script src="./tables_index.js?v=1771796694"></script>
+  <script src="./app.js?v=1771831993"></script>
+</body>
+</html>
